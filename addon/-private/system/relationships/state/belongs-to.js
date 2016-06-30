@@ -31,11 +31,14 @@ BelongsToRelationship.prototype.setRecord = function(newRecord) {
 };
 
 BelongsToRelationship.prototype.setCanonicalRecord = function(newRecord) {
-  if (newRecord) {
-    this.addCanonicalRecord(newRecord);
-  } else if (this.canonicalState) {
+  if (this.canonicalState) {
     this.removeCanonicalRecord(this.canonicalState);
   }
+
+  if (newRecord) {
+    this.addCanonicalRecord(newRecord);
+  }
+
   this.setHasData(true);
   this.setHasLoaded(true);
 };
